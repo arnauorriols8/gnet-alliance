@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G NET — Global Pharmaceutical Alliance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:        #0e1c3a;
+  --navy-mid:    #152342;
+  --navy-light:  #1e305a;
+  --cyan:        #2C7BE5;
+  --cyan-light:  #4d93f0;
+  --silver:      #8A9BB0;
+  --silver-light:#b8c6d8;
+  --white:       #F8F9FA;
+  --off-white:   #EEF2F8;
+  --gold:        #c9a84c;
+  --border:      rgba(44,123,229,0.15);
+  --border-light:rgba(138,155,176,0.2);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--navy);overflow-x:hidden}
+
+/* ── LOGO SVG INLINE ── */
+.logo-svg{width:36px;height:36px;flex-shrink:0}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5rem;height:76px;
+  background:rgba(8,14,28,0.97);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  transition:all .3s;
+}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-logo-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:500;
+  color:var(--white);letter-spacing:.12em;
+}
+.nav-logo-sub{
+  font-size:9px;font-weight:300;
+  color:var(--silver);letter-spacing:.3em;text-transform:uppercase;
+  display:block;margin-top:-3px;
+}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-links a{
+  text-decoration:none;font-size:11px;font-weight:400;
+  color:var(--silver-light);letter-spacing:.18em;text-transform:uppercase;
+  transition:color .2s;position:relative;
+}
+.nav-links a:hover{color:var(--white)}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;
+  height:1px;background:var(--cyan);
+  transform:scaleX(0);transition:transform .3s;transform-origin:left;
+}
+.nav-links a:hover::after{transform:scaleX(1)}
+.btn-nav{
+  font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--white)!important;background:var(--cyan);
+  padding:10px 24px;transition:background .2s!important;
+  border-radius:0;
+}
+.btn-nav:hover{background:var(--cyan-light)!important}
+.btn-nav::after{display:none!important}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;background:var(--navy);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+}
+.hero-bg-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(44,123,229,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(44,123,229,.05) 1px,transparent 1px);
+  background-size:72px 72px;
+}
+.hero-bg-glow{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 70% at 75% 45%,rgba(44,123,229,.1) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 50% at 15% 80%,rgba(14,28,58,.8) 0%,transparent 60%);
+}
+.hero-inner{
+  position:relative;z-index:2;
+  width:100%;max-width:1400px;margin:0 auto;
+  padding:9rem 5rem 6rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:2rem;
+}
+.hero-tag::before{content:'';width:36px;height:1px;background:var(--cyan)}
+h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.4rem,5.5vw,6rem);font-weight:300;
+  line-height:1.04;color:var(--white);
+  margin-bottom:1.8rem;letter-spacing:-.01em;
+}
+h1 em{font-style:italic;color:var(--silver-light)}
+.hero-sub{
+  font-size:15px;font-weight:300;line-height:1.85;
+  color:var(--silver);max-width:460px;margin-bottom:3rem;
+}
+.hero-btns{display:flex;align-items:center;gap:2.5rem}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--cyan);color:#fff;text-decoration:none;
+  font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  padding:15px 32px;transition:all .2s;
+}
+.btn-primary:hover{background:var(--cyan-light);transform:translateY(-1px)}
+.btn-ghost{
+  font-size:11px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--silver-light);text-decoration:none;
+  border-bottom:1px solid rgba(138,155,176,.35);padding-bottom:2px;
+  transition:color .2s;
+}
+.btn-ghost:hover{color:var(--white)}
+
+/* Hero emblem */
+.hero-emblem-wrap{display:flex;align-items:center;justify-content:center}
+.hero-emblem-wrap svg{width:380px;height:380px}
+.hero-rotate{animation:slowRot 60s linear infinite}
+@keyframes slowRot{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+/* Hero stats strip */
+.hero-stats{
+  position:absolute;bottom:0;left:0;right:0;z-index:2;
+  border-top:1px solid var(--border);
+  background:rgba(8,14,28,.7);backdrop-filter:blur(10px);
+  display:grid;grid-template-columns:repeat(4,1fr);
+  max-width:100%;
+}
+.stat-cell{
+  padding:1.8rem 3rem;border-right:1px solid var(--border);
+  display:flex;flex-direction:column;gap:4px;
+}
+.stat-cell:last-child{border-right:none}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.4rem;font-weight:400;color:var(--white);line-height:1;
+}
+.stat-lbl{
+  font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--silver);
+}
+
+/* ── TICKER ── */
+.ticker{
+  background:var(--navy-mid);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:13px 0;overflow:hidden;white-space:nowrap;
+}
+.ticker-track{
+  display:inline-flex;gap:5rem;
+  animation:tick 35s linear infinite;
+}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{
+  font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--silver);display:inline-flex;align-items:center;gap:2rem;
+}
+.ticker-item::after{content:'◆';color:var(--cyan);font-size:6px}
+
+/* ── SECTIONS SHARED ── */
+.section{padding:8rem 5rem;max-width:1400px;margin:0 auto}
+.section-full{padding:8rem 5rem}
+.section-label{
+  font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:1.4rem;
+  display:flex;align-items:center;gap:14px;
+}
+.section-label::before{content:'';width:28px;height:1px;background:var(--cyan)}
+h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,3.8vw,3.6rem);font-weight:400;
+  line-height:1.1;color:var(--navy);
+}
+h2.light{color:var(--white)}
+.section-desc{
+  font-size:15px;font-weight:300;line-height:1.9;
+  color:var(--silver);max-width:520px;margin-top:1.2rem;
+}
+
+/* ── ABOUT ── */
+.about-bg{background:var(--off-white)}
+.about-inner{
+  display:grid;grid-template-columns:1fr 1.3fr;gap:8rem;align-items:start;
+}
+.about-body p{
+  font-size:15px;font-weight:300;line-height:1.9;
+  color:#334155;margin-bottom:1.4rem;
+}
+.about-pillars{
+  margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;
+}
+.pillar{border-top:2px solid var(--cyan);padding-top:1rem}
+.pillar-title{
+  font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--navy);margin-bottom:.5rem;
+}
+.pillar-text{font-size:13px;font-weight:300;color:var(--silver);line-height:1.65}
+
+/* Influence diagram */
+.influence-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;
+}
+.influence-card{
+  background:var(--white);border:1px solid var(--border-light);
+  padding:2rem;transition:border-color .25s,transform .25s;cursor:default;
+}
+.influence-card:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.influence-icon{
+  width:40px;height:40px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.2rem;
+}
+.influence-icon svg{width:20px;height:20px;stroke:var(--cyan);fill:none;stroke-width:1.5}
+.influence-title{
+  font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--navy);margin-bottom:.5rem;
+}
+.influence-text{font-size:13px;font-weight:300;color:var(--silver);line-height:1.6}
+
+/* Partners scroll */
+.partners-strip{
+  margin-top:4rem;overflow:hidden;
+  border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);
+  padding:1.5rem 0;
+}
+.partners-track{
+  display:inline-flex;gap:4rem;align-items:center;
+  animation:tick 25s linear infinite;
+}
+.partner-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-weight:400;color:var(--silver);
+  letter-spacing:.08em;white-space:nowrap;
+  opacity:.6;transition:opacity .2s;
+}
+.partner-logo:hover{opacity:1}
+
+/* ── MEMBERSHIP ── */
+.membership-bg{background:var(--navy);position:relative;overflow:hidden}
+.membership-glow{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 85% 50%,rgba(44,123,229,.07) 0%,transparent 65%);
+}
+.membership-inner{position:relative;z-index:1}
+.membership-header{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:5rem;
+}
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.tier{
+  background:rgba(255,255,255,.03);
+  padding:2.5rem;transition:background .3s;
+  display:flex;flex-direction:column;
+}
+.tier:hover,.tier.featured{background:rgba(44,123,229,.07)}
+.tier-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3rem;font-weight:300;color:rgba(44,123,229,.25);
+  line-height:1;margin-bottom:1rem;
+}
+.tier-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:400;color:var(--white);
+  margin-bottom:.8rem;
+}
+.tier-badge{
+  font-size:9px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:1.5rem;
+}
+.tier-desc{
+  font-size:13px;font-weight:300;line-height:1.75;
+  color:var(--silver);margin-bottom:2rem;flex:1;
+  border-bottom:1px solid var(--border);padding-bottom:2rem;
+}
+.tier-list{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.tier-list li{
+  font-size:12px;font-weight:300;color:var(--silver-light);
+  display:flex;align-items:flex-start;gap:10px;line-height:1.5;
+}
+.tier-list li::before{content:'—';color:var(--cyan);flex-shrink:0;font-size:11px}
+
+/* ── SERVICES ── */
+.services-bg{background:var(--white)}
+.services-grid{
+  margin-top:4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  background:var(--border-light);border:1px solid var(--border-light);
+}
+.svc-card{
+  background:var(--white);padding:2.8rem 2.5rem;
+  transition:background .25s;cursor:default;
+}
+.svc-card:hover{background:var(--off-white)}
+.svc-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.5rem;font-weight:300;
+  color:rgba(44,123,229,.18);line-height:1;margin-bottom:1.5rem;
+}
+.svc-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:400;color:var(--navy);
+  margin-bottom:1rem;
+}
+.svc-text{font-size:13px;font-weight:300;line-height:1.75;color:var(--silver)}
+.svc-arrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cyan);text-decoration:none;margin-top:2rem;
+  transition:gap .2s;
+}
+.svc-arrow:hover{gap:14px}
+
+/* ── AGENDA ── */
+.agenda-bg{background:var(--off-white)}
+.agenda-table{
+  margin-top:4rem;border:1px solid var(--border-light);
+}
+.agenda-row{
+  background:var(--white);display:grid;
+  grid-template-columns:140px 1fr 1fr 120px;
+  align-items:center;gap:2.5rem;
+  padding:1.8rem 2.5rem;
+  border-bottom:1px solid var(--border-light);
+  transition:background .2s;
+}
+.agenda-row:last-child{border-bottom:none}
+.agenda-row:hover{background:var(--off-white)}
+.agenda-date{font-size:11px;font-weight:400;letter-spacing:.12em;color:var(--silver)}
+.agenda-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--navy)}
+.agenda-location{font-size:12px;font-weight:300;color:var(--silver)}
+.agenda-tag{
+  display:inline-block;font-size:9px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cyan);border:1px solid rgba(44,123,229,.3);
+  padding:4px 12px;text-align:center;
+}
+
+/* ── MEMBERS ALLIANCE ── */
+.members-bg{background:var(--navy-mid);position:relative;overflow:hidden}
+.members-bg::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(44,123,229,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(44,123,229,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.members-inner{position:relative;z-index:1}
+.members-header{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
+  align-items:end;margin-bottom:4rem;
+}
+.members-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.member-card{
+  background:rgba(255,255,255,.03);
+  padding:2rem 2.5rem;
+  transition:background .25s,border-color .25s;
+  border-left:2px solid transparent;
+}
+.member-card:hover{background:rgba(44,123,229,.06);border-left-color:var(--cyan)}
+.member-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:400;color:var(--white);
+  margin-bottom:.4rem;
+}
+.member-country{font-size:10px;font-weight:300;letter-spacing:.15em;color:var(--silver)}
+
+/* ── LOCATIONS ── */
+.locations-bg{background:var(--off-white)}
+.locations-grid{
+  margin-top:4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  background:var(--border-light);border:1px solid var(--border-light);
+}
+.location-card{
+  background:var(--white);padding:2.5rem;
+  transition:background .25s;
+}
+.location-card:hover{background:rgba(44,123,229,.04)}
+.location-flag{
+  font-size:1.8rem;margin-bottom:1.2rem;display:block;
+}
+.location-city{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:400;color:var(--navy);
+  margin-bottom:.4rem;
+}
+.location-role{
+  font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:1rem;
+}
+.location-desc{font-size:13px;font-weight:300;line-height:1.7;color:var(--silver)}
+
+/* ── NEWS ── */
+.news-bg{background:var(--white)}
+.news-grid{
+  margin-top:4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  background:var(--border-light);border:1px solid var(--border-light);
+}
+.news-card{background:var(--white);padding:2.5rem;transition:background .25s}
+.news-card:hover{background:var(--off-white)}
+.news-date{
+  font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--silver);margin-bottom:1rem;
+}
+.news-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;font-weight:400;color:var(--navy);
+  line-height:1.35;margin-bottom:1rem;
+}
+.news-excerpt{font-size:13px;font-weight:300;line-height:1.7;color:var(--silver)}
+.news-tag{
+  display:inline-block;margin-top:1.5rem;
+  font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cyan);border-top:1px solid var(--cyan);padding-top:6px;
+}
+
+/* ── CONTACT ── */
+.contact-bg{background:var(--navy);position:relative;overflow:hidden}
+.contact-glow{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 80% at 20% 50%,rgba(44,123,229,.07) 0%,transparent 60%);
+}
+.contact-inner{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 1.1fr;gap:8rem;align-items:start;
+}
+.contact-meta{margin-top:3rem;display:flex;flex-direction:column;gap:2rem}
+.contact-meta-item{}
+.contact-meta-label{
+  font-size:9px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:4px;
+}
+.contact-meta-value{font-size:14px;font-weight:300;color:var(--silver-light)}
+.form{display:flex;flex-direction:column;gap:1.2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{
+  font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--silver);
+}
+.field input,.field select,.field textarea{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(138,155,176,.2);
+  color:var(--white);font-family:'DM Sans',sans-serif;
+  font-size:14px;font-weight:300;padding:13px 16px;
+  outline:none;transition:border-color .2s;resize:none;appearance:none;
+}
+.field input::placeholder,.field textarea::placeholder{color:rgba(138,155,176,.45)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--cyan)}
+.field select option{background:var(--navy)}
+.form-submit{
+  margin-top:.5rem;
+  display:inline-flex;align-items:center;gap:12px;align-self:flex-start;
+  background:var(--cyan);color:#fff;border:none;
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  padding:15px 32px;cursor:pointer;transition:background .2s;
+}
+.form-submit:hover{background:var(--cyan-light)}
+
+/* ── FOOTER ── */
+footer{
+  background:rgba(5,10,22,1);
+  border-top:1px solid var(--border);
+  padding:4rem 5rem 2.5rem;
+}
+.footer-main{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:4rem;padding-bottom:3rem;
+  border-bottom:1px solid var(--border);margin-bottom:2rem;
+}
+.footer-brand .nav-logo{margin-bottom:1.2rem;display:flex}
+.footer-brand p{font-size:13px;font-weight:300;line-height:1.8;color:var(--silver)}
+.footer-col-title{
+  font-size:10px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:1.4rem;
+}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.footer-links a{
+  font-size:13px;font-weight:300;color:var(--silver);
+  text-decoration:none;transition:color .2s;
+}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between}
+.footer-copy{font-size:11px;font-weight:300;color:rgba(138,155,176,.45);letter-spacing:.05em}
+.footer-social{display:flex;gap:1.5rem}
+.social-link{
+  font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--silver);text-decoration:none;transition:color .2s;
+}
+.social-link:hover{color:var(--white)}
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ── SCROLL INDICATOR ── */
+.scroll-ind{
+  position:absolute;right:5rem;bottom:7rem;z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.scroll-ind span{
+  font-size:9px;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--silver);writing-mode:vertical-rl;
+}
+.scroll-line{width:1px;height:52px;background:linear-gradient(to bottom,var(--cyan),transparent);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <!-- S4 LOGO -->
+    <svg class="logo-svg" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="19" cy="19" r="17.5" fill="none" stroke="#2C7BE5" stroke-width="0.5" opacity="0.12"/>
+      <circle cx="19" cy="19" r="14" fill="none" stroke="#2C7BE5" stroke-width="0.65" opacity="0.3"/>
+      <circle cx="19" cy="19" r="10.5" fill="none" stroke="#2C7BE5" stroke-width="0.9" opacity="0.55"/>
+      <circle cx="19" cy="19" r="7.8" fill="#0a1424" stroke="#2C7BE5" stroke-width="1.4"/>
+      <circle cx="19" cy="4.5" r="1.1" fill="#2C7BE5"/>
+      <circle cx="31.2" cy="11.8" r="0.9" fill="#2C7BE5" opacity="0.7"/>
+      <circle cx="31.2" cy="26.2" r="1.1" fill="#2C7BE5"/>
+      <circle cx="19" cy="33.5" r="0.9" fill="#2C7BE5" opacity="0.7"/>
+      <circle cx="6.8" cy="26.2" r="1.1" fill="#2C7BE5"/>
+      <circle cx="6.8" cy="11.8" r="0.9" fill="#2C7BE5" opacity="0.7"/>
+      <line x1="19" y1="4.5" x2="31.2" y2="11.8" stroke="#2C7BE5" stroke-width="0.3" opacity="0.3"/>
+      <line x1="31.2" y1="11.8" x2="31.2" y2="26.2" stroke="#2C7BE5" stroke-width="0.3" opacity="0.3"/>
+      <line x1="31.2" y1="26.2" x2="19" y2="33.5" stroke="#2C7BE5" stroke-width="0.3" opacity="0.3"/>
+      <line x1="19" y1="33.5" x2="6.8" y2="26.2" stroke="#2C7BE5" stroke-width="0.3" opacity="0.3"/>
+      <line x1="6.8" y1="26.2" x2="6.8" y2="11.8" stroke="#2C7BE5" stroke-width="0.3" opacity="0.3"/>
+      <line x1="6.8" y1="11.8" x2="19" y2="4.5" stroke="#2C7BE5" stroke-width="0.3" opacity="0.3"/>
+      <path d="M 12.5 19 L 14.2 19 L 15.2 15.5 L 16.8 22.5 L 18 15.5 L 19.3 19 L 20.8 16.8 L 21.8 21.2 L 22.8 19 L 25.5 19" fill="none" stroke="#F8F9FA" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div>
+      <span class="nav-logo-text">G NET</span>
+      <span class="nav-logo-sub">Global Pharma Alliance</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#alliance">Alliance</a></li>
+    <li><a href="#agenda">Agenda</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact" class="btn-nav">Request Access</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-bg-glow"></div>
+
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Global Pharmaceutical Alliance — Est. 2025</div>
+      <h1>
+        The world's<br>
+        <em>most influential</em><br>
+        pharma body
+      </h1>
+      <p class="hero-sub">
+        G Net convenes the chief executives and policy directors of the world's foremost pharmaceutical corporations — coordinating strategy, shaping regulatory frameworks, and driving direct engagement with governments at the highest level.
+      </p>
+      <div class="hero-btns">
+        <a href="#membership" class="btn-primary">
+          Apply for Membership
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+        </a>
+        <a href="#about" class="btn-ghost">Discover G Net</a>
+      </div>
+    </div>
+
+    <!-- Large emblem -->
+    <div class="hero-emblem-wrap">
+      <svg viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer rings — static -->
+        <circle cx="190" cy="190" r="178" stroke="#2C7BE5" stroke-width="0.5" opacity="0.1"/>
+        <circle cx="190" cy="190" r="155" stroke="#2C7BE5" stroke-width="0.7" opacity="0.2"/>
+
+        <!-- Rotating ring with nodes -->
+        <g class="hero-rotate" style="transform-origin:190px 190px">
+          <circle cx="190" cy="190" r="130" stroke="#2C7BE5" stroke-width="0.8" opacity="0.4"/>
+          <circle cx="190" cy="60" r="5" fill="#2C7BE5"/>
+          <circle cx="302.6" cy="125" r="4" fill="#2C7BE5" opacity="0.7"/>
+          <circle cx="302.6" cy="255" r="5" fill="#2C7BE5"/>
+          <circle cx="190" cy="320" r="4" fill="#2C7BE5" opacity="0.7"/>
+          <circle cx="77.4" cy="255" r="5" fill="#2C7BE5"/>
+          <circle cx="77.4" cy="125" r="4" fill="#2C7BE5" opacity="0.7"/>
+          <line x1="190" y1="60" x2="302.6" y2="125" stroke="#2C7BE5" stroke-width="0.4" opacity="0.3"/>
+          <line x1="302.6" y1="125" x2="302.6" y2="255" stroke="#2C7BE5" stroke-width="0.4" opacity="0.3"/>
+          <line x1="302.6" y1="255" x2="190" y2="320" stroke="#2C7BE5" stroke-width="0.4" opacity="0.3"/>
+          <line x1="190" y1="320" x2="77.4" y2="255" stroke="#2C7BE5" stroke-width="0.4" opacity="0.3"/>
+          <line x1="77.4" y1="255" x2="77.4" y2="125" stroke="#2C7BE5" stroke-width="0.4" opacity="0.3"/>
+          <line x1="77.4" y1="125" x2="190" y2="60" stroke="#2C7BE5" stroke-width="0.4" opacity="0.3"/>
+        </g>
+
+        <!-- Dashed inner ring -->
+        <circle cx="190" cy="190" r="105" stroke="#2C7BE5" stroke-width="0.5" stroke-dasharray="3 7" opacity="0.3"/>
+
+        <!-- Core -->
+        <circle cx="190" cy="190" r="80" fill="#0a1424" stroke="#2C7BE5" stroke-width="1.8"/>
+        <circle cx="190" cy="190" r="64" fill="none" stroke="#2C7BE5" stroke-width="0.4" opacity="0.35"/>
+
+        <!-- ECG pulse inside core -->
+        <path d="M 138 190 L 150 190 L 156 168 L 164 212 L 170 168 L 177 190 L 184 178 L 191 202 L 197 190 L 242 190"
+          fill="none" stroke="#F8F9FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- Tick marks -->
+        <line x1="190" y1="108" x2="190" y2="116" stroke="#2C7BE5" stroke-width="1.5" opacity="0.6"/>
+        <line x1="190" y1="264" x2="190" y2="272" stroke="#2C7BE5" stroke-width="1.5" opacity="0.6"/>
+        <line x1="108" y1="190" x2="116" y2="190" stroke="#2C7BE5" stroke-width="1.5" opacity="0.6"/>
+        <line x1="264" y1="190" x2="272" y2="190" stroke="#2C7BE5" stroke-width="1.5" opacity="0.6"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Stats strip -->
+  <div class="hero-stats">
+    <div class="stat-cell">
+      <span class="stat-num">28</span>
+      <span class="stat-lbl">Member Companies</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">$2.4T</span>
+      <span class="stat-lbl">Combined Market Cap</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">140+</span>
+      <span class="stat-lbl">Countries Represented</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">6</span>
+      <span class="stat-lbl">Global Secretariats</span>
+    </div>
+  </div>
+
+  <div class="scroll-ind">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Policy & Regulatory Influence</span>
+    <span class="ticker-item">Global Health Strategy</span>
+    <span class="ticker-item">Pharmaceutical Innovation</span>
+    <span class="ticker-item">Government Relations</span>
+    <span class="ticker-item">Alliance Leadership</span>
+    <span class="ticker-item">Market Access</span>
+    <span class="ticker-item">Regulatory Convergence</span>
+    <span class="ticker-item">CEO-Level Diplomacy</span>
+    <span class="ticker-item">Policy & Regulatory Influence</span>
+    <span class="ticker-item">Global Health Strategy</span>
+    <span class="ticker-item">Pharmaceutical Innovation</span>
+    <span class="ticker-item">Government Relations</span>
+    <span class="ticker-item">Alliance Leadership</span>
+    <span class="ticker-item">Market Access</span>
+    <span class="ticker-item">Regulatory Convergence</span>
+    <span class="ticker-item">CEO-Level Diplomacy</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-bg" id="about">
+  <div class="section">
+    <div class="about-inner">
+      <div class="reveal">
+        <div class="section-label">About G Net</div>
+        <h2>The first global alliance of pharmaceutical leaders</h2>
+        <div style="margin-top:3rem">
+          <div class="influence-grid">
+            <div class="influence-card">
+              <div class="influence-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+              </div>
+              <div class="influence-title">Industrial Sphere</div>
+              <div class="influence-text">Direct relationships with 95% of the world's major pharmaceutical corporations and their C-suite leadership.</div>
+            </div>
+            <div class="influence-card">
+              <div class="influence-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <div class="influence-title">Academic Sphere</div>
+              <div class="influence-text">Collaboration with leading research universities and medical institutions across all continents.</div>
+            </div>
+            <div class="influence-card">
+              <div class="influence-icon">
+                <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              </div>
+              <div class="influence-title">Institutional Sphere</div>
+              <div class="influence-text">Access to the WHO, FDA, EMA, and the most influential public and private regulatory bodies globally.</div>
+            </div>
+            <div class="influence-card">
+              <div class="influence-icon">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="influence-title">Alliance Networks</div>
+              <div class="influence-text">Active agreements with the most prominent associations in the global Life Sciences sector.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p>G Net is an exclusive, invitation-only body that convenes the chief executives and policy directors of the world's largest pharmaceutical corporations. Modelled on the governance architecture of the G7 and G20, G Net operates as a non-governmental alliance with direct access to the highest levels of international regulatory and political institutions.</p>
+        <p>Founded on the principle that the pharmaceutical industry requires a unified and powerful voice, G Net coordinates global strategy, facilitates high-level diplomatic engagement, and drives regulatory harmonisation across all member jurisdictions.</p>
+        <p>We are the nexus between the pharmaceutical industry, academia, public institutions, and the governments that shape the future of global health.</p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-title">Political Influence</div>
+            <div class="pillar-text">Direct engagement with heads of state and international regulatory bodies worldwide.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-title">Strategic Alignment</div>
+            <div class="pillar-text">Coordinated positions on global health policy and market access frameworks.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-title">Regulatory Access</div>
+            <div class="pillar-text">Priority channel to WHO, FDA, EMA and multilateral institutions globally.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-title">Intelligence</div>
+            <div class="pillar-text">Confidential geopolitical briefings and policy foresight for member CEOs.</div>
+          </div>
+        </div>
+
+        <!-- Partner logos strip -->
+        <div class="partners-strip">
+          <div class="partners-track">
+            <span class="partner-logo">WHO</span>
+            <span class="partner-logo">World Economic Forum</span>
+            <span class="partner-logo">IFPMA</span>
+            <span class="partner-logo">EMA</span>
+            <span class="partner-logo">FDA</span>
+            <span class="partner-logo">ICH</span>
+            <span class="partner-logo">PMCPA</span>
+            <span class="partner-logo">BIO</span>
+            <span class="partner-logo">PhRMA</span>
+            <span class="partner-logo">WHO</span>
+            <span class="partner-logo">World Economic Forum</span>
+            <span class="partner-logo">IFPMA</span>
+            <span class="partner-logo">EMA</span>
+            <span class="partner-logo">FDA</span>
+            <span class="partner-logo">ICH</span>
+            <span class="partner-logo">PMCPA</span>
+            <span class="partner-logo">BIO</span>
+            <span class="partner-logo">PhRMA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="membership-bg" id="membership">
+  <div class="membership-glow"></div>
+  <div class="section membership-inner">
+    <div class="membership-header reveal">
+      <div>
+        <div class="section-label">Membership</div>
+        <h2 class="light">Integrate into<br>this elite community</h2>
+      </div>
+      <p class="section-desc">
+        G Net membership is extended by invitation only, subject to peer review by the G Net Council. Each tier reflects a distinct level of engagement, access, and organisational commitment to the Alliance.
+      </p>
+    </div>
+    <div class="tiers reveal">
+      <div class="tier">
+        <div class="tier-num">01</div>
+        <div class="tier-badge">Associate Member</div>
+        <div class="tier-name">Associate</div>
+        <p class="tier-desc">Entry-level access for organisations meeting minimum revenue and policy engagement criteria, with full access to the G Net ecosystem.</p>
+        <ul class="tier-list">
+          <li>G Net Annual Summit access</li>
+          <li>Quarterly intelligence briefings</li>
+          <li>Working group participation</li>
+          <li>G Net policy digest</li>
+          <li>Intranet & community access</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <div class="tier-num">02</div>
+        <div class="tier-badge">External Member</div>
+        <div class="tier-name">External</div>
+        <p class="tier-desc">Companies without on-site presence that wish to participate in G Net services and benefit from the Alliance's global positioning.</p>
+        <ul class="tier-list">
+          <li>Full service access remotely</li>
+          <li>Bilateral regulatory facilitation</li>
+          <li>Event & congress participation</li>
+          <li>Relational marketing inclusion</li>
+          <li>Investor & M&A ecosystem</li>
+        </ul>
+      </div>
+      <div class="tier featured">
+        <div class="tier-num">03</div>
+        <div class="tier-badge">Core Member — Voting</div>
+        <div class="tier-name">Member</div>
+        <p class="tier-desc">Full membership with voting rights on all G Net resolutions, strategic mandates, and direct access to Council-level sessions.</p>
+        <ul class="tier-list">
+          <li>Voting rights on all resolutions</li>
+          <li>Direct Council session access</li>
+          <li>CEO-level diplomatic introductions</li>
+          <li>Confidential geopolitical briefings</li>
+          <li>Priority regulatory channel</li>
+          <li>Heads-of-state engagement</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <div class="tier-num">04</div>
+        <div class="tier-badge">Tier IV — Founding</div>
+        <div class="tier-name">Founding</div>
+        <p class="tier-desc">Reserved for the original architects of G Net and organisations of exceptional global influence and market leadership.</p>
+        <ul class="tier-list">
+          <li>Seat on the G Net Council</li>
+          <li>Co-authorship of annual mandate</li>
+          <li>Private heads-of-state meetings</li>
+          <li>Named in G Net Charter</li>
+          <li>Priority access — all services</li>
+          <li>G Net Founding Member seal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-bg" id="services">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-label">Services</div>
+      <h2>360° strategic services<br>for our members</h2>
+    </div>
+    <div class="services-grid reveal">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <div class="svc-title">Relational Marketing & Influence</div>
+        <p class="svc-text">We develop relational marketing strategies that create tangible value and synergies for members. We organise and participate in institutional events, facilitating high-level networking and knowledge exchange. Our visibility and reach provide access to the most senior global contacts.</p>
+        <a href="#contact" class="svc-arrow">Learn more <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M1 7h12M8 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <div class="svc-title">Turnkey Project Integration</div>
+        <p class="svc-text">G Net provides 360° specialised services and strategic consultancy in industrialisation projects for high-technology product development. We are the trusted partner from R&D to market launch, offering GMP-compliant solutions for the pharmaceutical sector from concept to execution.</p>
+        <a href="#contact" class="svc-arrow">Learn more <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M1 7h12M8 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <div class="svc-title">Global Market Access</div>
+        <p class="svc-text">G Net facilitates the entry of member companies into new international markets with comprehensive, personalised strategies. We build the foundations for your business to establish and grow in each territory — coordinating with specialised local partners in each jurisdiction.</p>
+        <a href="#contact" class="svc-arrow">Learn more <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M1 7h12M8 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <div class="svc-title">Policy & Regulatory Affairs</div>
+        <p class="svc-text">Direct representation of member interests before WHO, FDA, EMA, and government bodies. G Net coordinates unified positions on regulatory matters, participates in public and private tenders, and represents the Alliance in global consortia to maximise collective influence.</p>
+        <a href="#contact" class="svc-arrow">Learn more <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M1 7h12M8 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">05</div>
+        <div class="svc-title">G Net Academy</div>
+        <p class="svc-text">Our training platform consolidates the educational offering demanded within the pharmaceutical industry. Leveraging the know-how of G Net member companies and academic collaborators, we deliver world-class executive education, technical training, and leadership programmes.</p>
+        <a href="#contact" class="svc-arrow">Learn more <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M1 7h12M8 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">06</div>
+        <div class="svc-title">Intelligence & Geopolitical Briefings</div>
+        <p class="svc-text">Confidential, member-only intelligence reports covering regulatory shifts, government policy trajectories, competitive landscapes, and geopolitical risk. Delivered quarterly to Council members and monthly to Core Members through our secure intranet platform.</p>
+        <a href="#contact" class="svc-arrow">Learn more <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M1 7h12M8 2l5 5-5 5"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALLIANCE / MEMBERS -->
+<section class="members-bg" id="alliance">
+  <div class="section members-inner">
+    <div class="members-header reveal">
+      <div>
+        <div class="section-label">The Alliance</div>
+        <h2 class="light">Member organisations</h2>
+      </div>
+      <p class="section-desc">G Net brings together the world's most significant pharmaceutical corporations. Membership is strictly by invitation and subject to Council approval.</p>
+    </div>
+    <div class="members-cards reveal">
+      <div class="member-card"><div class="member-name">Pfizer</div><div class="member-country">United States</div></div>
+      <div class="member-card"><div class="member-name">Roche</div><div class="member-country">Switzerland</div></div>
+      <div class="member-card"><div class="member-name">Johnson & Johnson</div><div class="member-country">United States</div></div>
+      <div class="member-card"><div class="member-name">Novartis</div><div class="member-country">Switzerland</div></div>
+      <div class="member-card"><div class="member-name">AstraZeneca</div><div class="member-country">United Kingdom</div></div>
+      <div class="member-card"><div class="member-name">Sanofi</div><div class="member-country">France</div></div>
+      <div class="member-card"><div class="member-name">Merck & Co.</div><div class="member-country">United States</div></div>
+      <div class="member-card"><div class="member-name">GlaxoSmithKline</div><div class="member-country">United Kingdom</div></div>
+      <div class="member-card"><div class="member-name">AbbVie</div><div class="member-country">United States</div></div>
+      <div class="member-card"><div class="member-name">Bristol Myers Squibb</div><div class="member-country">United States</div></div>
+      <div class="member-card"><div class="member-name">Bayer</div><div class="member-country">Germany</div></div>
+      <div class="member-card"><div class="member-name">Eli Lilly</div><div class="member-country">United States</div></div>
+      <div class="member-card"><div class="member-name">Takeda</div><div class="member-country">Japan</div></div>
+      <div class="member-card"><div class="member-name">Boehringer Ingelheim</div><div class="member-country">Germany</div></div>
+      <div class="member-card"><div class="member-name">Novo Nordisk</div><div class="member-country">Denmark</div></div>
+      <div class="member-card"><div class="member-name">Astellas</div><div class="member-country">Japan</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS / SECRETARIATS -->
+<section class="locations-bg" id="locations">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-label">Global Presence</div>
+      <h2>Six secretariats.<br>One global mandate.</h2>
+    </div>
+    <div class="locations-grid reveal" style="margin-top:4rem">
+      <div class="location-card">
+        <span class="location-flag">🇨🇭</span>
+        <div class="location-city">Geneva</div>
+        <div class="location-role">Global Headquarters</div>
+        <p class="location-desc">The G Net Secretariat and Council chamber. Home to the principal governance and policy coordination functions of the Alliance, adjacent to the WHO and WEF.</p>
+      </div>
+      <div class="location-card">
+        <span class="location-flag">🇺🇸</span>
+        <div class="location-city">Washington D.C.</div>
+        <div class="location-role">Americas Secretariat</div>
+        <p class="location-desc">G Net's Americas hub, managing engagement with the FDA, US Congress, and pharmaceutical policy bodies across North and South America.</p>
+      </div>
+      <div class="location-card">
+        <span class="location-flag">🇧🇪</span>
+        <div class="location-city">Brussels</div>
+        <div class="location-role">European Secretariat</div>
+        <p class="location-desc">Liaising with the EMA, European Commission, and EU Parliament. The centre of G Net's European regulatory harmonisation strategy.</p>
+      </div>
+      <div class="location-card">
+        <span class="location-flag">🇯🇵</span>
+        <div class="location-city">Tokyo</div>
+        <div class="location-role">Asia-Pacific Secretariat</div>
+        <p class="location-desc">Coordinating G Net engagement across the Asia-Pacific region with PMDA, MHLW, and the major pharmaceutical markets of Japan, South Korea, and China.</p>
+      </div>
+      <div class="location-card">
+        <span class="location-flag">🇦🇪</span>
+        <div class="location-city">Dubai</div>
+        <div class="location-role">MENA & Gulf Secretariat</div>
+        <p class="location-desc">Serving the rapidly growing pharmaceutical markets of the Middle East, North Africa and Gulf region, with direct government and sovereign fund engagement.</p>
+      </div>
+      <div class="location-card">
+        <span class="location-flag">🇬🇧</span>
+        <div class="location-city">London</div>
+        <div class="location-role">Strategy & Intelligence</div>
+        <p class="location-desc">The G Net intelligence, geopolitical risk, and strategic advisory function. Home of the G Net Council's confidential briefing programme and the G Net Academy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section class="agenda-bg" id="agenda">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-label">Agenda 2025 – 2026</div>
+      <h2>Upcoming summits<br>& working sessions</h2>
+    </div>
+    <div class="agenda-table reveal">
+      <div class="agenda-row">
+        <div class="agenda-date">Sep 2025</div>
+        <div class="agenda-title">G Net Inaugural Summit — Founding Session</div>
+        <div class="agenda-location">🇨🇭 Geneva, Switzerland</div>
+        <div class="agenda-tag">Summit</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-date">Oct 2025</div>
+        <div class="agenda-title">Regulatory Harmonisation Working Group — Session I</div>
+        <div class="agenda-location">🇧🇪 Brussels, Belgium</div>
+        <div class="agenda-tag">Working Group</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-date">Nov 2025</div>
+        <div class="agenda-title">G Net × WHO High-Level Policy Dialogue</div>
+        <div class="agenda-location">🇺🇸 New York, USA</div>
+        <div class="agenda-tag">Institutional</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-date">Jan 2026</div>
+        <div class="agenda-title">Global Market Access Strategy Briefing — Davos</div>
+        <div class="agenda-location">🇨🇭 Davos, Switzerland</div>
+        <div class="agenda-tag">Briefing</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-date">Feb 2026</div>
+        <div class="agenda-title">Asia-Pacific Pharmaceutical Regulatory Forum</div>
+        <div class="agenda-location">🇯🇵 Tokyo, Japan</div>
+        <div class="agenda-tag">Forum</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-date">Mar 2026</div>
+        <div class="agenda-title">G Net Council — Q1 Mandate & Resolution Session</div>
+        <div class="agenda-location">🇬🇧 London, UK</div>
+        <div class="agenda-tag">Council</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-date">May 2026</div>
+        <div class="agenda-title">G Net Annual CPHI Global Pharma Congress</div>
+        <div class="agenda-location">🇩🇪 Frankfurt, Germany</div>
+        <div class="agenda-tag">Congress</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-date">Sep 2026</div>
+        <div class="agenda-title">G Net Second Annual Summit</div>
+        <div class="agenda-location">🇦🇪 Dubai, UAE</div>
+        <div class="agenda-tag">Summit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news-bg" id="news">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-label">Latest News</div>
+      <h2>Alliance updates<br>& announcements</h2>
+    </div>
+    <div class="news-grid reveal">
+      <div class="news-card">
+        <div class="news-date">April 2025</div>
+        <div class="news-title">G Net formally established as a non-governmental international body in Geneva</div>
+        <p class="news-excerpt">The G Net Alliance has completed its founding legal structure in Switzerland, establishing its principal secretariat adjacent to the WHO headquarters in Geneva.</p>
+        <span class="news-tag">Institutional</span>
+      </div>
+      <div class="news-card">
+        <div class="news-date">March 2025</div>
+        <div class="news-title">First 12 founding member corporations confirmed for the Alliance Council</div>
+        <p class="news-excerpt">G Net announces the confirmation of its first cohort of Founding Members, representing a combined market capitalisation of over $1.8 trillion and operations in 90+ countries.</p>
+        <span class="news-tag">Membership</span>
+      </div>
+      <div class="news-card">
+        <div class="news-date">February 2025</div>
+        <div class="news-title">G Net Inaugural Summit confirmed for September 2025 in Geneva</div>
+        <p class="news-excerpt">The first G Net Annual Summit will convene pharmaceutical CEOs, policy directors, and government officials for three days of closed-door strategy sessions and bilateral meetings.</p>
+        <span class="news-tag">Events</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="contact-glow"></div>
+  <div class="section">
+    <div class="contact-inner">
+      <div class="reveal">
+        <div class="section-label">Contact</div>
+        <h2 class="light">Request access<br>to G Net</h2>
+        <p style="font-size:15px;font-weight:300;line-height:1.85;color:var(--silver);margin-top:1.5rem">
+          Membership applications are reviewed by the G Net Secretariat. All enquiries are treated with the strictest confidentiality. Our team will respond within 5 business days.
+        </p>
+        <div class="contact-meta">
+          <div class="contact-meta-item">
+            <div class="contact-meta-label">Global Secretariat</div>
+            <div class="contact-meta-value">secretariat@gnet-alliance.org</div>
+          </div>
+          <div class="contact-meta-item">
+            <div class="contact-meta-label">Headquarters</div>
+            <div class="contact-meta-value">Geneva, Switzerland</div>
+          </div>
+          <div class="contact-meta-item">
+            <div class="contact-meta-label">Membership Office</div>
+            <div class="contact-meta-value">membership@gnet-alliance.org</div>
+          </div>
+          <div class="contact-meta-item">
+            <div class="contact-meta-label">Press & Media</div>
+            <div class="contact-meta-value">press@gnet-alliance.org</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="form">
+          <div class="form-row">
+            <div class="field"><label>First Name</label><input type="text" placeholder="First name"></div>
+            <div class="field"><label>Last Name</label><input type="text" placeholder="Last name"></div>
+          </div>
+          <div class="field"><label>Organisation</label><input type="text" placeholder="Company name"></div>
+          <div class="field"><label>Title / Position</label><input type="text" placeholder="e.g. Chief Executive Officer"></div>
+          <div class="field"><label>Corporate Email</label><input type="email" placeholder="name@company.com"></div>
+          <div class="field">
+            <label>Enquiry Type</label>
+            <select>
+              <option value="">Select one</option>
+              <option>Founding Membership Application</option>
+              <option>Core Membership Application</option>
+              <option>Associate Membership Application</option>
+              <option>Partnership Enquiry</option>
+              <option>Media & Press</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="field"><label>Message</label><textarea rows="4" placeholder="Briefly describe your organisation and your interest in G Net..."></textarea></div>
+          <button class="form-submit">
+            Submit Enquiry
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="margin-bottom:1.2rem">
+        <svg class="logo-svg" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="17.5" fill="none" stroke="#2C7BE5" stroke-width="0.5" opacity="0.12"/>
+          <circle cx="19" cy="19" r="14" fill="none" stroke="#2C7BE5" stroke-width="0.65" opacity="0.3"/>
+          <circle cx="19" cy="19" r="10.5" fill="none" stroke="#2C7BE5" stroke-width="0.9" opacity="0.55"/>
+          <circle cx="19" cy="19" r="7.8" fill="#0a1424" stroke="#2C7BE5" stroke-width="1.4"/>
+          <circle cx="19" cy="4.5" r="1.1" fill="#2C7BE5"/>
+          <circle cx="31.2" cy="11.8" r="1.1" fill="#2C7BE5"/>
+          <circle cx="31.2" cy="26.2" r="1.1" fill="#2C7BE5"/>
+          <circle cx="19" cy="33.5" r="1.1" fill="#2C7BE5"/>
+          <circle cx="6.8" cy="26.2" r="1.1" fill="#2C7BE5"/>
+          <circle cx="6.8" cy="11.8" r="1.1" fill="#2C7BE5"/>
+          <path d="M 12.5 19 L 14.2 19 L 15.2 15.5 L 16.8 22.5 L 18 15.5 L 19.3 19 L 20.8 16.8 L 21.8 21.2 L 22.8 19 L 25.5 19" fill="none" stroke="#F8F9FA" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <span class="nav-logo-text">G NET</span>
+          <span class="nav-logo-sub">Global Pharma Alliance</span>
+        </div>
+      </a>
+      <p>The world's foremost alliance of pharmaceutical leaders, shaping global health policy at the highest levels of government and regulatory institutions.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-links">
+        <li><a href="#about">About G Net</a></li>
+        <li><a href="#membership">Membership</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#alliance">The Alliance</a></li>
+        <li><a href="#agenda">Agenda</a></li>
+        <li><a href="#news">News</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Secretariats</div>
+      <ul class="footer-links">
+        <li><a href="#">Geneva — HQ</a></li>
+        <li><a href="#">Washington D.C.</a></li>
+        <li><a href="#">Brussels</a></li>
+        <li><a href="#">Tokyo</a></li>
+        <li><a href="#">Dubai</a></li>
+        <li><a href="#">London</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Access</a></li>
+        <li><a href="#">Alliance Charter</a></li>
+        <li><a href="#">Code of Conduct</a></li>
+        <li><a href="#">Member Intranet</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 G Net Global Pharmaceutical Alliance. All rights reserved. Geneva, Switzerland.</span>
+    <div class="footer-social">
+      <a href="#" class="social-link">LinkedIn</a>
+      <a href="#" class="social-link">Press</a>
+      <a href="#" class="social-link">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  nav.style.background = window.scrollY > 60
+    ? 'rgba(5,10,22,0.99)'
+    : 'rgba(8,14,28,0.97)';
+});
+</script>
+</body>
+</html>
